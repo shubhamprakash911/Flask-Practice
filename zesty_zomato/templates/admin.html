@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h2>Add Dish</h2>
+            <form method="POST" action="/menu">
+               <label for="name">Dish Name:</label>
+               <input type="text" id="name" name="name" required>
+
+               <label for="Availability">Availability</label>
+               <input type="text" id="Availability" name="Availability" required>
+
+               <label for="price">Price</label>
+               <input type="text" id="price" name="price" required>
+
+               <button type="submit">Add Dish</button>               
+            </form>
+       </div>
+
+       <div class="update">
+        <form action="PUT"></form>
+       </div>
+    </div>
+</body>
+</html>

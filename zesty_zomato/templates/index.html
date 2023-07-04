@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zesty Zomato</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Zesty Zomato</h1>
+    </header>
+
+    <div class="container">
+        <div class="menu">
+            <h2>Menu</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody id="menu-table-body"></tbody>
+            </table>
+        </div>
+
+
+        <div class="order">
+            <h2>Place Order</h2>
+            <form id="order-form">
+                <label for="customer-name">Customer Name:</label>
+                <input type="text" id="customer-name" required>
+
+                <label for="dish-ids">Dish IDs (comma-separated):</label>
+                <input type="text" id="dish-ids" required>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+
+
+
+        <div class="order-status">
+            <h2>Order Status</h2>
+            <form id="order-status-form">
+                <label for="order-id">Order ID:</label>
+                <input type="text" id="order-id" required>
+
+                <label for="status">Status:</label>
+                <select id="status" required>
+                    <option value="preparing">Preparing</option>
+                    <option value="ready for pickup">Ready for Pickup</option>
+                    <option value="delivered">Delivered</option>
+                </select>
+
+                <button type="submit">Update Status</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="orders-list">
+        <h2>All Orders</h2>
+        <ul id="orders"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

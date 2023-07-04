@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Dish 1",
+        "price": 10,
+        "availability": "yes"
+    },
+    {
+        "id": 2,
+        "name": "Dish 2",
+        "price": 15,
+        "availability": "no"
+    },
+    {
+        "dish": "pizza",
+        "id": 3,
+        "availability": "yes"
+    },
+    {
+        "name": "roti",
+        "id": 5
+    }
+]
