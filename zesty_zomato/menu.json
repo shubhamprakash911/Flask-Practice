@@ -3,21 +3,34 @@
         "id": 1,
         "name": "Dish 1",
         "price": 10,
-        "availability": "yes"
+        "availability": "no"
     },
     {
         "id": 2,
         "name": "Dish 2",
         "price": 15,
-        "availability": "no"
-    },
-    {
-        "dish": "pizza",
-        "id": 3,
         "availability": "yes"
     },
     {
+        "id": 3,
+        "dish": "pizza",
+        "availability": "yes"
+    },
+    {
+        "id": 5,
         "name": "roti",
+        "availability": "yes"
+    },
+    {
+        "name": "dal",
+        "availability": "yes",
+        "price": "123",
         "id": 5
+    },
+    {
+        "name": "dal",
+        "availability": "yes",
+        "price": "123",
+        "id": 6
     }
 ]

@@ -1,7 +1,12 @@
 from flask import Flask, request, jsonify,render_template
 import json
+from pymongo import MongoClient
+
 
 app = Flask(__name__)
+
+# client = MongoClient("mongodb+srv://shubham:shubham@cluster0.lsxduhy.mongodb.net/flaskDB")
+# db = client['flaskDB']
 
 # Load menu data from JSON file
 def load_menu():
@@ -29,6 +34,11 @@ def index():
    return render_template('index.html')
 
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
+
 # Get all dishes from the menu
 @app.route('/menu', methods=['GET'])
 def get_menu():
@@ -51,22 +61,26 @@ def add_dish():
     return jsonify({'message': 'Dish added successfully'})
 
 # Update the availability of a dish
-@app.route('/menu/<int:dish_id>', methods=['PUT'])
-def update_dish_availability(dish_id):
+@app.route('/menu', methods=['PUT'])
+def update_dish_availability():
+
     menu = load_menu()
+    dish_id=int(request.json['id'])
 
     for dish in menu:
         if dish['id'] == dish_id:
-            dish['availability'] = request.json['availability']
+            dish['availability'] = 'no' if dish['availability'] =='yes' else 'yes'
+            print(dish)
             save_menu(menu)
             return jsonify({'message': 'Dish availability updated successfully'})
 
     return jsonify({'message': 'Dish not found'})
 
 # Remove a dish from the menu
-@app.route('/menu/<int:dish_id>', methods=['DELETE'])
-def remove_dish(dish_id):
+@app.route('/menu', methods=['DELETE'])
+def remove_dish():
     menu = load_menu()
+    dish_id=int(request.json['id'])
 
     for dish in menu:
         if dish['id'] == dish_id:
@@ -104,10 +118,10 @@ def take_order():
     return jsonify({'message': 'Order taken successfully'})
 
 # Update the status of an order
-@app.route('/orders/<int:order_id>', methods=['PUT'])
-def update_order_status(order_id):
+@app.route('/orders', methods=['PUT'])
+def update_order_status():
     orders = load_orders()
-
+    order_id=int(request.json['order_id'])
     for order in orders:
         if order['id'] == order_id:
             order['status'] = request.json['status']
@@ -121,6 +135,7 @@ def update_order_status(order_id):
 def get_orders():
     orders = load_orders()
     return jsonify(orders)
+    # return render_template("admin.html",orders=jsonify(orders))
 
 if __name__ == '__main__':
     app.run(debug=True)
